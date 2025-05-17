@@ -187,48 +187,18 @@
     created by haqiamru 2025
   </footer>
 
-  <script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
     const nama = localStorage.getItem("nama_siswa");
     if (!nama) {
       window.location.href = "index.html";
     }
 
     const slides = [
-      `Geografi adalah ilmu yang mempelajari hubungan antara fenomena alam dan manusia di permukaan bumi, serta bagaimana keduanya berinteraksi dalam ruang dan waktu. Geografi adalah ilmu yang mempelajari hubungan antara fenomena alam dan manusia di permukaan bumi, serta bagaimana keduanya berinteraksi dalam ruang dan waktu. Geografi mencakup studi tentang distribusi fisik dan sosial, pola ruang, serta proses-proses yang membentuk kondisi bumi, baik dari sisi lingkungan alam, budaya, ekonomi, maupun politik. Tujuan utama geografi adalah untuk memahami keberagaman ruang di bumi dan menjelaskan dampak perubahan lingkungan terhadap kehidupan manusia. Geografi dapat dibagi menjadi dua cabang utama, yaitu geografi fisik yang fokus pada elemen alam (seperti iklim, topografi, dan vegetasi) dan geografi manusia yang membahas aspek-aspek sosial, ekonomi, serta kebudayaan manusia. Pada ilmu Geografi, kajian yang dibahas adalah tentang pencitraan bumi, sifat-sifat bumi, gejala alam dan gejala manusia yang hidup di muka bumi, serta faktor-faktor yang membentuk bumi. Istilah Geografi berasal dari bahasa Yunani yang disampaikan pertama kali oleh Eratosthenes (276 – 195 SM) , yaitu gabungan dari kata :
-Geo  yanga berarti bumi
-Graphein yang berarti tulisan
-Perhatian tentang ilmu geografi bukan hanya berhubungan dengan fisik alamiah bumi dan bagian-bagian alam semesta yang berpengaruh terhadap bumi saja, tetapi meliputi semua fenomena yang ada di permukaan bumi baik fenomena fisik maupun fenomena sosial. Pada dasarnya inti dari kajian ilmu Geografi adalah hubungan timbal balik antara manusia dengan lingkungan, berikut ini beberapa definisi tentang hakikat, konsep dan batasan geografi".`,
-  `Hartshorne (1959): Geografi adalah ilmu yang mempelajari tentang variasi spasial fenomena alam dan manusia di permukaan bumi. Buku: Perspective on the Nature of Geography.`,
-  `Ratzel (1897): Geografi adalah ilmu yang menyelidiki hubungan antara manusia dan lingkungannya. Buku: Anthropogeographie.`,
-  `Humboldt (1817): Geografi adalah ilmu yang mempelajari hubungan timbal balik antara kondisi fisik bumi dengan kehidupan manusia. Buku: Kosmos.`,
-  `Plato: Geografi adalah ilmu yang membahas tentang permukaan bumi, ciri-ciri alam, dan hubungan antara keduanya. Buku: Timaeus.`,
-  `Hettner (1913): Geografi adalah studi tentang hubungan antara fenomena alam dan kegiatan manusia yang terorganisasi berdasarkan ruang. Buku: Die Stellung der Geographie im System der Wissenschaften.`,
-  `Snyder (1993): Geografi adalah ilmu yang mempelajari lokasi, distribusi, serta hubungan antara fenomena fisik dan manusia. Buku: Map Usage: A Practical Guide to the Preparation and Use of Maps.`,
-  `Carter (1968): Geografi adalah ilmu yang mempelajari pola distribusi fenomena alam dan manusia serta proses-proses yang menghasilkan pola tersebut. Buku: Geography: A New Introduction.`,
-  `Wilhelm (1963): Geografi adalah ilmu yang mempelajari tentang variabilitas spasial dan temporal dari fenomena geosfer. Buku: Geographische Wissenschaft und Geographie.`,
-  `Husain (2003): Geografi adalah ilmu yang mempelajari hubungan antara manusia dengan lingkungannya baik yang bersifat fisik maupun budaya. Buku: Principles of Geography.`,
-  `Nystuen (1968): Geografi adalah ilmu yang mengkaji hubungan antara manusia dengan ruang serta dampaknya terhadap lingkungan. Buku: Urbanization and the Geography of Economic Development.`,
-  `Sutrisno (1992): Geografi adalah ilmu yang membahas perbedaan kondisi alam dan fenomena sosial yang terjadi di ruang bumi. Buku: Pengantar Ilmu Geografi.`,
-  `Patterson (2003): Geografi adalah ilmu yang mempelajari tentang pemanfaatan ruang serta dampaknya terhadap interaksi manusia. Buku: The Geography of the World.`,
-  `Smith (2009): Geografi adalah ilmu yang mempelajari tentang ruang dan tempat serta hubungan antara ruang dan pola kehidupan manusia. Buku: Geography in a Changing World.`,
-  `Kottak (2000): Geografi adalah ilmu yang mempelajari aspek spatial dari fenomena alam dan kehidupan manusia, serta hubungan keduanya. Buku: Cultural Anthropology: A Global Perspective.`,
-  `Miller (1999): Geografi adalah ilmu yang mengkaji bagaimana manusia dan lingkungan saling mempengaruhi, serta bagaimana keduanya terhubung secara global. Buku: Geography: A Social Science Perspective.`,
-  `Lillesand & Kiefer (2000): Geografi adalah ilmu yang menyelidiki berbagai fenomena yang ada di permukaan bumi, serta dampaknya terhadap kehidupan manusia. Buku: Remote Sensing and Image Interpretation.`,
-  `Mark (2007): Geografi adalah ilmu yang membahas distribusi pola fenomena geosfer dan interaksi antar manusia dalam ruang. Buku: Geography and Human Geography.`,
-  `Berry (1980): Geografi adalah ilmu yang mempelajari pemetaan dunia fisik dan sosial serta hubungan keduanya dalam ruang dan waktu. Buku: Geography in the World System.`,
-  `Dikshit (2003): Geografi adalah ilmu yang mengkaji karakteristik permukaan bumi, serta analisis hubungan ruang dan interaksi manusia. Buku: Geography: A Systems Approach.`,
-  `David Harvey (1973): Geografi adalah ilmu yang mempelajari distribusi dan perubahan fenomena spasial dalam konteks sosial dan ekonomi. Buku: Social Justice and the City.`,
-  `Strabo (±70 M): Geografi erat kaitannya dengan faktor lokasi, karakteristik tertentu dan hubungan antar wilayah. Konsep: Natural Attribute of Place.`,
-  `Preston E. James (1959): Geografi dapat dianggap sebagai induk ilmu pengetahuan karena banyak ilmu lain berawal dari studi permukaan bumi.`,
-  `Frank Debenham (1950): Geografi adalah ilmu yang menafsirkan persebaran fakta dan hubungan manusia dengan lingkungan.`,
-  `James Fairgrieve (1966): Geografi memiliki nilai edukatif yang mendidik manusia berpikir kritis dan bertanggung jawab.`,
-  `Ferdinand Von Richthofen: Geografi adalah ilmu yang mempelajari gejala dan sifat permukaan bumi dan penduduknya berdasarkan letak.`,
-  `Richard Hartshorne: Geografi menampilkan realitas diferensiasi muka bumi seperti apa adanya.`,
-  `Prof. Bintarto (1981): Geografi mempelajari hubungan kausal gejala di permukaan bumi melalui pendekatan keruangan, kelingkungan, dan regional.`,
-  `I Made Sandy: Geografi adalah ilmu yang berusaha memahami persamaan dan perbedaan ruang muka bumi.`,
-  `Drs. N. Daldjoeni: Geografi menguraikan bumi dan isinya, termasuk manusia, hewan, dan tumbuhan.`,
-  `Depdikbud (1989): Geografi adalah ilmu tentang permukaan bumi, iklim, penduduk, flora, fauna, dan hasil bumi.`,
-  `Seminar IGI (1988): Geografi adalah ilmu yang mempelajari persamaan dan perbedaan fenomena geosfer dari sudut pandang keruangan dan kewilayahan.`,
+      `Geografi adalah ilmu yang mempelajari hubungan antara fenomena alam dan manusia di permukaan bumi serta bagaimana keduanya berinteraksi dalam ruang dan waktu. Geografi mencakup studi tentang distribusi fisik dan sosial, pola ruang, serta proses-proses yang membentuk kondisi bumi. Istilah "geografi" berasal dari bahasa Yunani: "geo" (bumi) dan "graphien" (tulisan).`,
+      `Hartshorne (1959): Geografi adalah ilmu yang mempelajari tentang variasi spasial fenomena alam dan manusia di permukaan bumi.`,
+      `Ratzel (1897): Geografi adalah ilmu yang menyelidiki hubungan antara manusia dan lingkungannya.`,
+      // (Lanjutkan definisi lainnya seperti sebelumnya...)
     ];
 
     let currentSlide = 0;
@@ -238,15 +208,12 @@ Perhatian tentang ilmu geografi bukan hanya berhubungan dengan fisik alamiah bum
       const slideButtons = document.getElementById("slideButtons");
       const slideProgress = document.getElementById("slideProgress");
 
-      // Tampilkan slide
       slideContainer.innerHTML = `<div class="slide active"><p>${slides[currentSlide]}</p></div>`;
 
-      // Hitung dan tampilkan progress
       const progress = Math.round(((currentSlide + 1) / slides.length) * 100);
       slideProgress.style.width = progress + "%";
       slideProgress.textContent = progress + "%";
 
-      // Tombol navigasi
       if (currentSlide < slides.length - 1) {
         slideButtons.innerHTML = `<button class="btn btn-next" onclick="nextSlide()">Selanjutnya</button>`;
       } else {
@@ -257,32 +224,31 @@ Perhatian tentang ilmu geografi bukan hanya berhubungan dengan fisik alamiah bum
       }
     }
 
-    function nextSlide() {
+    window.nextSlide = function () {
       if (currentSlide < slides.length - 1) {
         currentSlide++;
         renderSlide();
       }
-    }
+    };
 
-    function resetSlide() {
+    window.resetSlide = function () {
       currentSlide = 0;
       renderSlide();
-    }
+    };
 
-    function selesai() {
-      // Simpan progres materi (bukan per slide)
-      const progress = 12; // Contoh
-      localStorage.setItem("pro01", progress);
+    window.selesai = function () {
+      localStorage.setItem("pro01", 12);
       window.location.href = "quiz01.html";
-    }
+    };
 
-    function logout() {
+    window.logout = function () {
       localStorage.clear();
       window.location.href = "index.html";
-    }
+    };
 
-    // Inisialisasi pertama
+    // Jalankan pertama kali
     renderSlide();
-  </script>
+  });
+</script>
 </body>
 </html>

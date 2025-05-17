@@ -2,109 +2,143 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geo8Tangsel-Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Geo8Tangsel - Login</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #f0f4f8;
+      background-color: #f0f2f5;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
+
     header, footer {
       background-color: #2c3e50;
       color: white;
       text-align: center;
       padding: 1em 0;
     }
-    main {
+
+    .login-container {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 2em;
     }
+
     .login-box {
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background-color: white;
+      padding: 2em 3em;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
       width: 100%;
       max-width: 400px;
     }
+
     .login-box h2 {
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.5em;
     }
-    .login-box input {
+
+    .form-group {
+      margin-bottom: 1.2em;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5em;
+      font-weight: 600;
+    }
+
+    .form-group input {
       width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
+      padding: 0.8em;
       border: 1px solid #ccc;
       border-radius: 6px;
+      font-size: 1em;
     }
-    .login-box button {
+
+    button {
       width: 100%;
-      padding: 0.75rem;
+      padding: 0.9em;
       background-color: #2980b9;
       color: white;
       border: none;
       border-radius: 6px;
+      font-size: 1em;
       cursor: pointer;
+      margin-top: 1em;
     }
-    .login-box button:hover {
-      background-color: #1c5980;
+
+    button:hover {
+      background-color: #2471a3;
     }
-    .error {
-      color: red;
-      text-align: center;
-      margin-bottom: 1rem;
+
+    @media (max-width: 600px) {
+      .login-box {
+        padding: 1.5em 2em;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Geo8Tangsel-Login</h1>
+    <h1>Geo8Tangsel - Login</h1>
   </header>
 
-  <main>
+  <div class="login-container">
     <div class="login-box">
-      <h2>Login</h2>
-      <div class="error" id="error"></div>
-      <input type="text" id="username" placeholder="Username" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button onclick="login()">Masuk</button>
+      <h2>Masuk ke Sistem</h2>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Masukkan username" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Masukkan password" required />
+      </div>
+      <button onclick="login()">Login</button>
     </div>
-  </main>
+  </div>
 
   <footer>
     created by haqiamru 2025
   </footer>
 
   <script>
-    async function login() {
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const errorDiv = document.getElementById("error");
+    const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT_LSbeItKzYS0gpFa46kVlMMo4-Sux1DEXC6e6kypC438QFZxDW1u2WWdwu4klzYCqvFXaMXOqAder/pub?output=csv";
 
-      const res = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vT_LSbeItKzYS0gpFa46kVlMMo4-Sux1DEXC6e6kypC438QFZxDW1u2WWdwu4klzYCqvFXaMXOqAder/pub?output=csv");
-      const data = await res.text();
+    let users = [];
 
-      const rows = data.trim().split("\n").slice(1);
-      let found = false;
-      for (const row of rows) {
-        const [user, pass, nama_siswa] = row.split(",");
-        if (user.trim() === username && pass.trim() === password) {
-          localStorage.setItem("nama_siswa", nama_siswa.trim());
-          window.location.href = "home.html";
-          found = true;
-          break;
+    // Ambil data dari spreadsheet
+    fetch(SHEET_URL)
+      .then(res => res.text())
+      .then(data => {
+        const rows = data.trim().split("\n").map(row => row.split(","));
+        const headers = rows[0];
+        for (let i = 1; i < rows.length; i++) {
+          let obj = {};
+          for (let j = 0; j < headers.length; j++) {
+            obj[headers[j].trim()] = rows[i][j].trim();
+          }
+          users.push(obj);
         }
-      }
+      });
 
-      if (!found) {
-        errorDiv.textContent = "Username atau password salah!";
+    function login() {
+      const uname = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+
+      const user = users.find(u => u.username === uname && u.password === pass);
+      if (user) {
+        localStorage.setItem("nama_siswa", user.nama_siswa);
+        localStorage.setItem("kelas", user.kelas);
+        window.location.href = "home.html";
+      } else {
+        alert("Username atau password salah!");
       }
     }
   </script>

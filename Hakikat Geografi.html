@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakikat Geografi - Geo8Tangsel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header, footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+    }
+    .container {
+      display: flex;
+      flex: 1;
+    }
+    nav {
+      background: #ecf0f1;
+      width: 250px;
+      padding: 1em;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 1em 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: bold;
+    }
+    .submenu {
+      margin-left: 1em;
+    }
+    .menu-tambahan > a {
+      color: #2980b9;
+    }
+    .submenu a {
+      color: #7f8c8d;
+      font-weight: normal;
+    }
+    main {
+      flex: 1;
+      padding: 2em;
+    }
+    .breadcrumb {
+      font-size: 0.9em;
+      color: #7f8c8d;
+      margin-bottom: 1em;
+    }
+    .card {
+      background: white;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .card p.small-italic {
+      font-size: 0.9em;
+      font-style: italic;
+      color: #7f8c8d;
+    }
+    .card p.bold-large {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      nav {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Geo8Tangsel</h1>
+  </header>
+
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="home.html">Beranda</a></li>
+        <li><a href="materi.html">Materi</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+      <hr />
+      <ul>
+        <li class="menu-tambahan"><a href="#">Definisi Geografi</a></li>
+        <li class="menu-tambahan">
+          <a href="#">Filsafat Geografi</a>
+          <ul class="submenu">
+            <li><a href="#">Aspek Filsafat Geo</a></li>
+            <li><a href="#">Sejarah Perkembangan</a></li>
+            <li><a href="#">Teori dan Pemikiran Filsafat Geo</a></li>
+            <li><a href="#">Referensi dan Literatur Filsafat Geo</a></li>
+          </ul>
+        </li>
+        <li class="menu-tambahan">
+          <a href="#">Pendekatan Geografi</a>
+          <ul class="submenu">
+            <li><a href="#">Pendekatan Spasial</a></li>
+            <li><a href="#">Ekologi</a></li>
+            <li><a href="#">Kewilayahan</a></li>
+          </ul>
+        </li>
+        <li class="menu-tambahan"><a href="#">Konsep</a></li>
+        <li class="menu-tambahan"><a href="#">Prinsip</a></li>
+        <li class="menu-tambahan"><a href="#">Aspek</a></li>
+        <li class="menu-tambahan"><a href="#">Ruang Lingkup</a></li>
+        <li class="menu-tambahan"><a href="#">Ilmu Penunjang</a></li>
+        <li class="menu-tambahan"><a href="#">Manfaat Ilmu Geografi</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="breadcrumb">Materi / Hakikat Geografi</div>
+      <h2>Hakikat Geografi</h2>
+      <div class="card">
+        <p class="small-italic">
+          Hakikat geografi mencakup pemahaman tentang ilmu yang mempelajari hubungan timbal balik antara manusia dengan lingkungan serta berbagai fenomena alam yang terjadi di permukaan bumi.
+        </p>
+        <p class="bold-large">
+          Geografi tidak hanya mengkaji aspek fisik seperti bentuk muka bumi, iklim, dan ekosistem, tetapi juga menelaah aktivitas manusia, distribusi penduduk, serta pola-pola sosial dan ekonomi yang mempengaruhi kehidupan di berbagai wilayah. Melalui pendekatan spasial dan ekologi, geografi membantu siswa untuk memahami dinamika alam dan manusia secara menyeluruh, serta dampaknya terhadap kehidupan dan pengelolaan sumber daya alam.
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    created by haqiamru 2025
+  </footer>
+
+  <script>
+    const nama = localStorage.getItem("nama_siswa");
+    if (!nama) {
+      window.location.href = "index.html";
+    }
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

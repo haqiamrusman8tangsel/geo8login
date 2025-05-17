@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ubah Profil - Geo8Tangsel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header, footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+    }
+    .container {
+      display: flex;
+      flex: 1;
+    }
+    nav {
+      background: #ecf0f1;
+      width: 200px;
+      padding: 1em;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 1em 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: bold;
+    }
+    main {
+      flex: 1;
+      padding: 2em;
+    }
+    .breadcrumb {
+      font-size: 0.9em;
+      color: #7f8c8d;
+      margin-bottom: 1em;
+    }
+    .form-box {
+      background: white;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .form-box input {
+      width: 100%;
+      padding: 0.75em;
+      margin-bottom: 1em;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .form-box button {
+      padding: 0.75em 1.5em;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      nav {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Geo8Tangsel</h1>
+  </header>
+
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="home.html">Beranda</a></li>
+        <li><a href="#">Materi</a></li>
+        <li><a href="#">Penilaian</a></li>
+        <li><a href="#">OSN</a></li>
+        <li><a href="profil.html">Profil User</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="breadcrumb">Profil User > Ubah Profil</div>
+      <h2>Ubah Profil</h2>
+      <div class="form-box">
+        <label>Nama Siswa:</label>
+        <input type="text" id="nama" />
+        <label>Kelas:</label>
+        <input type="text" id="kelas" />
+        <button onclick="simpan()">Update</button>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    created by haqiamru 2025
+  </footer>
+
+  <script>
+    const nama = localStorage.getItem("nama_siswa");
+    const kelas = localStorage.getItem("kelas");
+    if (!nama || !kelas) {
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("nama").value = nama;
+      document.getElementById("kelas").value = kelas;
+    }
+
+    function simpan() {
+      const namaBaru = document.getElementById("nama").value.trim();
+      const kelasBaru = document.getElementById("kelas").value.trim();
+
+      if (namaBaru && kelasBaru) {
+        localStorage.setItem("nama_siswa", namaBaru);
+        localStorage.setItem("kelas", kelasBaru);
+        alert("Profil berhasil diperbarui.");
+        window.location.href = "profil.html";
+      } else {
+        alert("Mohon isi semua data.");
+      }
+    }
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

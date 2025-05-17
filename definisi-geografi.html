@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Definisi Geografi - Geo8Tangsel</title>
+  <title>Hakikat Geografi - Geo8Tangsel</title>
   <style>
     body {
       margin: 0;
@@ -65,22 +65,26 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
     .slide {
+      display: none;
+    }
+    .slide.active {
+      display: block;
+    }
+    .slide-progress-container {
+      margin-top: 1em;
       margin-bottom: 2em;
     }
-    .progress-container {
-      margin: 2em 0;
-    }
-    .progress-label {
-      margin-bottom: 0.5em;
+    .slide-progress-label {
       font-weight: bold;
+      margin-bottom: 0.3em;
     }
-    .progress-bar {
+    .slide-progress-bar {
       background-color: #ddd;
       border-radius: 20px;
       overflow: hidden;
       height: 20px;
     }
-    .progress-bar-fill {
+    .slide-progress-fill {
       height: 100%;
       width: 0%;
       background-color: #9b59b6;
@@ -89,18 +93,28 @@
       line-height: 20px;
       font-size: 0.8em;
     }
-    .btn-next {
-      display: inline-block;
+    .nav-buttons {
       margin-top: 2em;
+      display: flex;
+      gap: 1em;
+    }
+    .btn {
       padding: 0.75em 1.5em;
-      background-color: #2980b9;
+      border: none;
+      border-radius: 6px;
       color: white;
       text-decoration: none;
-      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
     }
-    .btn-repeat {
-      background-color: #f39c12;
-      margin-left: 1em;
+    .btn-next {
+      background-color: #27ae60;
+    }
+    .btn-finish {
+      background-color: #2980b9;
+    }
+    .btn-restart {
+      background-color: #c0392b;
     }
     @media (max-width: 768px) {
       .container {
@@ -150,20 +164,21 @@
     </nav>
 
     <main>
-      <div class="breadcrumb">Materi - Definisi Geografi</div>
-      <h2>Definisi Geografi</h2>
+      <div class="breadcrumb">Materi - Hakikat Geografi</div>
+      <h2>Hakikat Geografi</h2>
       <div class="card">
-        <div id="slideContent" class="slide"></div>
-
-        <div class="progress-container">
-          <div class="progress-label">Kemajuan Materi</div>
-          <div class="progress-bar">
-            <div class="progress-bar-fill" id="progressBar">0%</div>
+        <div id="slideContainer">
+          <!-- Slides akan diisi lewat JavaScript -->
+        </div>
+        <div class="slide-progress-container">
+          <div class="slide-progress-label">Kemajuan Slide</div>
+          <div class="slide-progress-bar">
+            <div class="slide-progress-fill" id="slideProgress">0%</div>
           </div>
         </div>
-
-        <button id="nextBtn" class="btn-next">Berikutnya</button>
-        <button id="repeatBtn" class="btn-next btn-repeat" style="display:none;">Ulangi</button>
+        <div class="nav-buttons" id="slideButtons">
+          <button class="btn btn-next" onclick="nextSlide()">Selanjutnya</button>
+        </div>
       </div>
     </main>
   </div>
@@ -179,76 +194,73 @@
     }
 
     const slides = [
-      {
-        content: `<p><strong>Geografi</strong> adalah ilmu yang mempelajari hubungan antara fenomena alam dan manusia di permukaan bumi, serta bagaimana keduanya berinteraksi dalam ruang dan waktu.</p>
-        <p style="margin-top: 1em;">Geografi mencakup studi tentang distribusi fisik dan sosial, pola ruang, serta proses-proses yang membentuk kondisi bumi. Tujuannya adalah memahami keberagaman ruang di bumi dan menjelaskan dampak perubahan lingkungan terhadap manusia.</p>
-        <p style="margin-top: 1em; font-style: italic; font-size: 0.9em;">Istilah geografi berasal dari bahasa Yunani: <strong>Geo</strong> berarti bumi dan <strong>Graphein</strong> berarti tulisan, diperkenalkan oleh Eratosthenes (276–195 SM).</p>`
-      },
-      {
-        tokoh: "Hartshorne (1959)",
-        definisi: "Geografi adalah ilmu yang mempelajari tentang variasi spasial fenomena alam dan manusia di permukaan bumi.",
-        buku: "Perspective on the Nature of Geography"
-      },
-      {
-        tokoh: "Ratzel (1897)",
-        definisi: "Geografi adalah ilmu yang menyelidiki hubungan antara manusia dan lingkungannya.",
-        buku: "Anthropogeographie"
-      },
-      {
-        tokoh: "Humboldt (1817)",
-        definisi: "Geografi adalah ilmu yang mempelajari hubungan timbal balik antara kondisi fisik bumi dengan kehidupan manusia.",
-        buku: "Kosmos"
-      }
+      `Geografi adalah ilmu yang mempelajari hubungan antara fenomena alam dan manusia di permukaan bumi, serta bagaimana keduanya berinteraksi dalam ruang dan waktu.`,
+      `Geografi mencakup studi tentang distribusi fisik dan sosial, pola ruang, serta proses-proses yang membentuk kondisi bumi, baik dari sisi lingkungan alam, budaya, ekonomi, maupun politik.`,
+      `Tujuan utama geografi adalah untuk memahami keberagaman ruang di bumi dan menjelaskan dampak perubahan lingkungan terhadap kehidupan manusia.`,
+      `Geografi dapat dibagi menjadi dua cabang utama, yaitu geografi fisik yang fokus pada elemen alam dan geografi manusia yang membahas aspek-aspek sosial, ekonomi, serta kebudayaan.`,
+      `Istilah Geografi berasal dari bahasa Yunani: Geo berarti bumi, Graphein berarti tulisan. Pertama kali disampaikan oleh Eratosthenes (276 – 195 SM).`,
+      `Geografi bukan hanya membahas fisik bumi tapi juga fenomena sosial. Inti kajiannya adalah hubungan manusia dan lingkungan.`,
+      `Contoh definisi: Ratzel (1897) - Geografi menyelidiki hubungan manusia dan lingkungan. Buku: Anthropogeographie.`,
+      `Hartshorne (1959): Geografi mempelajari variasi spasial fenomena di bumi. Buku: Perspective on the Nature of Geography.`,
+      `Plato: Geografi membahas permukaan bumi dan hubungan alam. Buku: Timaeus. Humboldt: Hubungan kondisi fisik bumi dan manusia.`,
+      `Hettner (1913): Studi hubungan fenomena alam dan aktivitas manusia berdasarkan ruang.`,
+      `Seminar IGI 1988: Geografi adalah ilmu yang mempelajari persamaan dan perbedaan fenomena geosfer dari sudut pandang kewilayahan dan keruangan.`,
+      `Unsur utama geografi mencakup: jarak, interaksi, gerakan, dan persebaran.`,
+      `Geografi membantu manusia berpikir kritis terhadap fenomena lingkungan dan sosial. Peta menjadi alat penting dalam menjawab pertanyaan "di mana".`
     ];
 
-    let currentIndex = 0;
+    let currentSlide = 0;
 
-    function renderSlide(index) {
-      const slide = slides[index];
-      const container = document.getElementById('slideContent');
-      if (slide.tokoh) {
-        container.innerHTML = `
-          <h3 style="color: #2980b9; margin-bottom: 0.5em;">${slide.tokoh}</h3>
-          <p>${slide.definisi}</p>
-          <p style="font-style: italic; font-size: 0.9em;">Sumber: <strong>${slide.buku}</strong></p>
-        `;
+    function renderSlide() {
+      const slideContainer = document.getElementById("slideContainer");
+      const slideButtons = document.getElementById("slideButtons");
+      const slideProgress = document.getElementById("slideProgress");
+
+      // Tampilkan slide
+      slideContainer.innerHTML = `<div class="slide active"><p>${slides[currentSlide]}</p></div>`;
+
+      // Hitung dan tampilkan progress
+      const progress = Math.round(((currentSlide + 1) / slides.length) * 100);
+      slideProgress.style.width = progress + "%";
+      slideProgress.textContent = progress + "%";
+
+      // Tombol navigasi
+      if (currentSlide < slides.length - 1) {
+        slideButtons.innerHTML = `<button class="btn btn-next" onclick="nextSlide()">Selanjutnya</button>`;
       } else {
-        container.innerHTML = slide.content;
-      }
-
-      const progress = Math.floor(((index + 1) / slides.length) * 100);
-      const bar = document.getElementById('progressBar');
-      bar.style.width = progress + '%';
-      bar.textContent = progress + '%';
-
-      localStorage.setItem("pro02", progress);
-
-      if (index === slides.length - 1) {
-        document.getElementById('nextBtn').style.display = 'none';
-        document.getElementById('repeatBtn').style.display = 'inline-block';
+        slideButtons.innerHTML = `
+          <button class="btn btn-finish" onclick="selesai()">Selesai</button>
+          <button class="btn btn-restart" onclick="resetSlide()">Ulangi Lagi</button>
+        `;
       }
     }
 
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      currentIndex++;
-      if (currentIndex < slides.length) {
-        renderSlide(currentIndex);
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        renderSlide();
       }
-    });
+    }
 
-    document.getElementById('repeatBtn').addEventListener('click', () => {
-      currentIndex = 0;
-      renderSlide(currentIndex);
-      document.getElementById('nextBtn').style.display = 'inline-block';
-      document.getElementById('repeatBtn').style.display = 'none';
-    });
+    function resetSlide() {
+      currentSlide = 0;
+      renderSlide();
+    }
+
+    function selesai() {
+      // Simpan progres materi (bukan per slide)
+      const progress = 12; // Contoh
+      localStorage.setItem("pro01", progress);
+      window.location.href = "quiz01.html";
+    }
 
     function logout() {
       localStorage.clear();
       window.location.href = "index.html";
     }
 
-    renderSlide(currentIndex);
+    // Inisialisasi pertama
+    renderSlide();
   </script>
 </body>
 </html>

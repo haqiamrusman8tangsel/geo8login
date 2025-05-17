@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hakikat Geografi - Geo8Tangsel</title>
   <style>
     body {
@@ -25,7 +25,7 @@
     }
     nav {
       background: #ecf0f1;
-      width: 250px;
+      width: 220px;
       padding: 1em;
     }
     nav ul {
@@ -40,15 +40,14 @@
       color: #2c3e50;
       font-weight: bold;
     }
-    .submenu {
+    nav .sub-menu {
       margin-left: 1em;
-    }
-    .menu-tambahan > a {
-      color: #2980b9;
-    }
-    .submenu a {
-      color: #7f8c8d;
       font-weight: normal;
+    }
+    nav .menu-tambahan {
+      margin-top: 2em;
+      color: #8e44ad;
+      font-weight: bold;
     }
     main {
       flex: 1;
@@ -65,15 +64,46 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
-    .card p.small-italic {
+    .intro {
       font-size: 0.9em;
       font-style: italic;
-      color: #7f8c8d;
+      margin-bottom: 1em;
     }
-    .card p.bold-large {
+    .main-text {
       font-size: 1.1em;
       font-weight: bold;
-      color: #2c3e50;
+      margin-bottom: 2em;
+    }
+    .progress-container {
+      margin: 2em 0;
+    }
+    .progress-label {
+      margin-bottom: 0.5em;
+      font-weight: bold;
+    }
+    .progress-bar {
+      background-color: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 20px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #3498db;
+      text-align: center;
+      color: white;
+      line-height: 20px;
+      font-size: 0.8em;
+    }
+    .btn-next {
+      display: inline-block;
+      margin-top: 2em;
+      padding: 0.75em 1.5em;
+      background-color: #27ae60;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
     }
     @media (max-width: 768px) {
       .container {
@@ -96,46 +126,49 @@
         <li><a href="home.html">Beranda</a></li>
         <li><a href="materi.html">Materi</a></li>
         <li><a href="#" onclick="logout()">Logout</a></li>
-      </ul>
-      <hr />
-      <ul>
-        <li class="menu-tambahan"><a href="#">Definisi Geografi</a></li>
-        <li class="menu-tambahan">
-          <a href="#">Filsafat Geografi</a>
-          <ul class="submenu">
+
+        <li class="menu-tambahan">Definisi Geografi</li>
+        <li class="menu-tambahan">Filsafat Geografi
+          <ul class="sub-menu">
             <li><a href="#">Aspek Filsafat Geo</a></li>
             <li><a href="#">Sejarah Perkembangan</a></li>
-            <li><a href="#">Teori dan Pemikiran Filsafat Geo</a></li>
-            <li><a href="#">Referensi dan Literatur Filsafat Geo</a></li>
+            <li><a href="#">Teori dan Pemikiran</a></li>
+            <li><a href="#">Referensi & Literatur</a></li>
           </ul>
         </li>
-        <li class="menu-tambahan">
-          <a href="#">Pendekatan Geografi</a>
-          <ul class="submenu">
+        <li class="menu-tambahan">Pendekatan Geografi
+          <ul class="sub-menu">
             <li><a href="#">Pendekatan Spasial</a></li>
-            <li><a href="#">Ekologi</a></li>
-            <li><a href="#">Kewilayahan</a></li>
+            <li><a href="#">Pendekatan Ekologi</a></li>
+            <li><a href="#">Pendekatan Kewilayahan</a></li>
           </ul>
         </li>
-        <li class="menu-tambahan"><a href="#">Konsep</a></li>
-        <li class="menu-tambahan"><a href="#">Prinsip</a></li>
-        <li class="menu-tambahan"><a href="#">Aspek</a></li>
+        <li class="menu-tambahan"><a href="#">Konsep Geografi</a></li>
+        <li class="menu-tambahan"><a href="#">Prinsip Geografi</a></li>
+        <li class="menu-tambahan"><a href="#">Aspek Geografi</a></li>
         <li class="menu-tambahan"><a href="#">Ruang Lingkup</a></li>
         <li class="menu-tambahan"><a href="#">Ilmu Penunjang</a></li>
-        <li class="menu-tambahan"><a href="#">Manfaat Ilmu Geografi</a></li>
+        <li class="menu-tambahan"><a href="#">Manfaat Geografi</a></li>
       </ul>
     </nav>
 
     <main>
-      <div class="breadcrumb">Materi / Hakikat Geografi</div>
+      <div class="breadcrumb">Materi - Hakikat Geografi</div>
       <h2>Hakikat Geografi</h2>
       <div class="card">
-        <p class="small-italic">
-          Hakikat geografi mencakup pemahaman tentang ilmu yang mempelajari hubungan timbal balik antara manusia dengan lingkungan serta berbagai fenomena alam yang terjadi di permukaan bumi.
-        </p>
-        <p class="bold-large">
+        <p class="intro">Hakikat geografi mencakup pemahaman tentang ilmu yang mempelajari hubungan timbal balik antara manusia dengan lingkungan serta berbagai fenomena alam yang terjadi di permukaan bumi.</p>
+        <p class="main-text">
           Geografi tidak hanya mengkaji aspek fisik seperti bentuk muka bumi, iklim, dan ekosistem, tetapi juga menelaah aktivitas manusia, distribusi penduduk, serta pola-pola sosial dan ekonomi yang mempengaruhi kehidupan di berbagai wilayah. Melalui pendekatan spasial dan ekologi, geografi membantu siswa untuk memahami dinamika alam dan manusia secara menyeluruh, serta dampaknya terhadap kehidupan dan pengelolaan sumber daya alam.
         </p>
+
+        <div class="progress-container">
+          <div class="progress-label">Kemajuan Materi</div>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" id="progressBar">0%</div>
+          </div>
+        </div>
+
+        <a href="definisi-geografi.html" class="btn-next">Lanjut ke Definisi Geografi →</a>
       </div>
     </main>
   </div>
@@ -149,6 +182,12 @@
     if (!nama) {
       window.location.href = "index.html";
     }
+
+    // Set dan tampilkan progres
+    const progress = 12; // Misalnya sudah 12% diselesaikan
+    document.getElementById("progressBar").style.width = progress + "%";
+    document.getElementById("progressBar").textContent = progress + "%";
+    localStorage.setItem("pro01", progress); // Simpan ke localStorage seperti database
 
     function logout() {
       localStorage.clear();

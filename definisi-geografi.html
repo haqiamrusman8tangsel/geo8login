@@ -11,11 +11,16 @@
   <!-- Sidebar -->
   <aside class="w-64 bg-white shadow h-screen p-4">
     <h1 class="text-2xl font-bold mb-6">Geo8Tangsel</h1>
+    <div class="mb-4 p-2 bg-gray-200 rounded">
+      <p class="text-sm font-medium text-gray-800">Nama: <span id="displayName">Loading...</span></p>
+      <p class="text-sm font-medium text-gray-800">Kelas: <span id="displayClass">-</span></p>
+      <button onclick="logout()" class="mt-2 text-red-600 text-sm">Logout</button>
+    </div>
     <nav class="mb-8">
       <ul class="space-y-2">
         <li><a href="home.html" class="text-blue-600">Beranda</a></li>
         <li><a href="hakikat.html" class="text-blue-600">Materi</a></li>
-        <li><a href="login.html" class="text-blue-600">Log Out</a></li>
+        <li><a href="ubahprofil.html" class="text-blue-600">Ubah Profil</a></li>
       </ul>
     </nav>
     <hr class="mb-4">
@@ -122,9 +127,7 @@
 
     function updateProgress() {
       const progress = Math.floor(((currentIndex + 1) / slides.length) * 100);
-      const bar = document.getElementById('progressBar');
-      bar.style.width = progress + '%';
-
+      document.getElementById('progressBar').style.width = progress + '%';
       if (currentIndex === slides.length - 1) {
         document.getElementById('globalProgressBar').style.width = '15%';
       }
@@ -148,6 +151,10 @@
     });
 
     renderSlide(currentIndex);
+
+    function logout() {
+      window.location.href = "login.html";
+    }
   </script>
 </body>
 </html>

@@ -2,94 +2,187 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Definisi Geografi</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://apis.google.com/js/api.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Definisi Geografi - Geo8Tangsel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header, footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+    }
+    .container {
+      display: flex;
+      flex: 1;
+    }
+    nav {
+      background: #ecf0f1;
+      width: 220px;
+      padding: 1em;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 1em 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: bold;
+    }
+    nav .sub-menu {
+      margin-left: 1em;
+      font-weight: normal;
+    }
+    nav .menu-tambahan {
+      margin-top: 2em;
+      color: #8e44ad;
+      font-weight: bold;
+    }
+    main {
+      flex: 1;
+      padding: 2em;
+    }
+    .breadcrumb {
+      font-size: 0.9em;
+      color: #7f8c8d;
+      margin-bottom: 1em;
+    }
+    .card {
+      background: white;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .slide {
+      margin-bottom: 2em;
+    }
+    .progress-container {
+      margin: 2em 0;
+    }
+    .progress-label {
+      margin-bottom: 0.5em;
+      font-weight: bold;
+    }
+    .progress-bar {
+      background-color: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 20px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #9b59b6;
+      text-align: center;
+      color: white;
+      line-height: 20px;
+      font-size: 0.8em;
+    }
+    .btn-next {
+      display: inline-block;
+      margin-top: 2em;
+      padding: 0.75em 1.5em;
+      background-color: #2980b9;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    .btn-repeat {
+      background-color: #f39c12;
+      margin-left: 1em;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      nav {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
-<body class="flex bg-gray-100">
-  <!-- Sidebar -->
-  <aside class="w-64 bg-white shadow h-screen p-4">
-    <h1 class="text-2xl font-bold mb-6">Geo8Tangsel</h1>
-    <div class="mb-4 p-2 bg-gray-200 rounded">
-      <p class="text-sm font-medium text-gray-800">Nama: <span id="displayName">Loading...</span></p>
-      <p class="text-sm font-medium text-gray-800">Kelas: <span id="displayClass">-</span></p>
-      <button onclick="logout()" class="mt-2 text-red-600 text-sm">Logout</button>
-    </div>
-    <nav class="mb-8">
-      <ul class="space-y-2">
-        <li><a href="home.html" class="text-blue-600">Beranda</a></li>
-        <li><a href="hakikat.html" class="text-blue-600">Materi</a></li>
-        <li><a href="ubahprofil.html" class="text-blue-600">Ubah Profil</a></li>
-      </ul>
-    </nav>
-    <hr class="mb-4">
+<body>
+  <header>
+    <h1>Geo8Tangsel</h1>
+  </header>
+
+  <div class="container">
     <nav>
-      <h2 class="text-sm font-bold text-gray-600 mb-2">Materi Tambahan</h2>
-      <ul class="space-y-1">
-        <li><a href="#" class="text-purple-600">Definisi Geografi</a></li>
-        <li class="ml-4 text-purple-600">Filsafat Geografi</li>
-        <ul class="ml-6 space-y-1 text-purple-600">
-          <li>Aspek Filsafat Geo</li>
-          <li>Sejarah Perkembangan</li>
-          <li>Teori dan Pemikiran</li>
-          <li>Referensi dan Literatur</li>
-        </ul>
-        <li class="text-purple-600">Pendekatan Geografi</li>
-        <ul class="ml-6 space-y-1 text-purple-600">
-          <li>Pendekatan Spasial</li>
-          <li>Ekologi dan Kewilayahan</li>
-        </ul>
-        <li class="text-purple-600">Konsep</li>
-        <li class="text-purple-600">Prinsip</li>
-        <li class="text-purple-600">Aspek</li>
-        <li class="text-purple-600">Ruang Lingkup</li>
-        <li class="text-purple-600">Ilmu Penunjang</li>
-        <li class="text-purple-600">Manfaat Ilmu Geografi</li>
+      <ul>
+        <li><a href="home.html">Beranda</a></li>
+        <li><a href="materi.html">Materi</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+
+        <li class="menu-tambahan">Definisi Geografi</li>
+        <li class="menu-tambahan">Filsafat Geografi
+          <ul class="sub-menu">
+            <li><a href="#">Aspek Filsafat Geo</a></li>
+            <li><a href="#">Sejarah Perkembangan</a></li>
+            <li><a href="#">Teori dan Pemikiran</a></li>
+            <li><a href="#">Referensi & Literatur</a></li>
+          </ul>
+        </li>
+        <li class="menu-tambahan">Pendekatan Geografi
+          <ul class="sub-menu">
+            <li><a href="#">Pendekatan Spasial</a></li>
+            <li><a href="#">Pendekatan Ekologi</a></li>
+            <li><a href="#">Pendekatan Kewilayahan</a></li>
+          </ul>
+        </li>
+        <li class="menu-tambahan"><a href="#">Konsep Geografi</a></li>
+        <li class="menu-tambahan"><a href="#">Prinsip Geografi</a></li>
+        <li class="menu-tambahan"><a href="#">Aspek Geografi</a></li>
+        <li class="menu-tambahan"><a href="#">Ruang Lingkup</a></li>
+        <li class="menu-tambahan"><a href="#">Ilmu Penunjang</a></li>
+        <li class="menu-tambahan"><a href="#">Manfaat Geografi</a></li>
       </ul>
     </nav>
-  </aside>
 
-  <!-- Main Content -->
-  <main class="flex-1 p-6 overflow-y-auto">
-    <h2 class="text-3xl font-bold mb-4">Definisi Geografi</h2>
+    <main>
+      <div class="breadcrumb">Materi - Definisi Geografi</div>
+      <h2>Definisi Geografi</h2>
+      <div class="card">
+        <div id="slideContent" class="slide"></div>
 
-    <!-- Progress Bar Atas (Global) -->
-    <div class="mb-4">
-      <label class="block text-sm font-medium text-gray-700 mb-1">Kemajuan Global</label>
-      <div class="w-full bg-gray-300 rounded-full h-3">
-        <div id="globalProgressBar" class="bg-green-600 h-3 rounded-full" style="width: 0%"></div>
-      </div>
-    </div>
-
-    <!-- Slide Container -->
-    <div id="slideContainer" class="bg-white rounded shadow p-6">
-      <div id="slideContent">
-        <!-- Slide akan dimuat di sini -->
-      </div>
-
-      <!-- Progress Bar Bawah (Lokal) -->
-      <div class="mt-6">
-        <label class="block text-sm text-gray-700 mb-1">Kemajuan Slide</label>
-        <div class="w-full bg-gray-300 rounded-full h-3">
-          <div id="progressBar" class="bg-purple-500 h-3 rounded-full" style="width: 0%"></div>
+        <div class="progress-container">
+          <div class="progress-label">Kemajuan Materi</div>
+          <div class="progress-bar">
+            <div class="progress-bar-fill" id="progressBar">0%</div>
+          </div>
         </div>
-      </div>
 
-      <div class="flex justify-end space-x-2 mt-4">
-        <button id="repeatBtn" class="hidden px-4 py-2 bg-yellow-500 text-white rounded">Ulangi</button>
-        <button id="nextBtn" class="px-4 py-2 bg-blue-500 text-white rounded">Berikutnya</button>
+        <button id="nextBtn" class="btn-next">Berikutnya</button>
+        <button id="repeatBtn" class="btn-next btn-repeat" style="display:none;">Ulangi</button>
       </div>
-    </div>
-  </main>
+    </main>
+  </div>
+
+  <footer>
+    created by haqiamru 2025
+  </footer>
 
   <script>
+    const nama = localStorage.getItem("nama_siswa");
+    if (!nama) {
+      window.location.href = "index.html";
+    }
+
     const slides = [
       {
-        content: `<h3 class='text-xl font-bold mb-2'>Definisi Geografi</h3>
-        <p>Geografi adalah ilmu yang mempelajari hubungan antara fenomena alam dan manusia di permukaan bumi, serta bagaimana keduanya berinteraksi dalam ruang dan waktu.</p>
-        <p class='mt-2'>Geografi mencakup studi tentang distribusi fisik dan sosial, pola ruang, serta proses-proses yang membentuk kondisi bumi. Tujuannya adalah memahami keberagaman ruang di bumi dan menjelaskan dampak perubahan lingkungan terhadap manusia.</p>
-        <p class='mt-2 italic text-sm'>Istilah geografi berasal dari bahasa Yunani: <strong>Geo</strong> berarti bumi dan <strong>Graphein</strong> berarti tulisan, diperkenalkan oleh Eratosthenes (276–195 SM).</p>`
+        content: `<p><strong>Geografi</strong> adalah ilmu yang mempelajari hubungan antara fenomena alam dan manusia di permukaan bumi, serta bagaimana keduanya berinteraksi dalam ruang dan waktu.</p>
+        <p style="margin-top: 1em;">Geografi mencakup studi tentang distribusi fisik dan sosial, pola ruang, serta proses-proses yang membentuk kondisi bumi. Tujuannya adalah memahami keberagaman ruang di bumi dan menjelaskan dampak perubahan lingkungan terhadap manusia.</p>
+        <p style="margin-top: 1em; font-style: italic; font-size: 0.9em;">Istilah geografi berasal dari bahasa Yunani: <strong>Geo</strong> berarti bumi dan <strong>Graphein</strong> berarti tulisan, diperkenalkan oleh Eratosthenes (276–195 SM).</p>`
       },
       {
         tokoh: "Hartshorne (1959)",
@@ -105,7 +198,7 @@
         tokoh: "Humboldt (1817)",
         definisi: "Geografi adalah ilmu yang mempelajari hubungan timbal balik antara kondisi fisik bumi dengan kehidupan manusia.",
         buku: "Kosmos"
-      },
+      }
     ];
 
     let currentIndex = 0;
@@ -115,46 +208,47 @@
       const container = document.getElementById('slideContent');
       if (slide.tokoh) {
         container.innerHTML = `
-          <h4 class='text-lg font-bold text-blue-700 mb-1'>${slide.tokoh}</h4>
-          <p class='mb-1'>${slide.definisi}</p>
-          <p class='italic text-sm'>Sumber: <strong>${slide.buku}</strong></p>
+          <h3 style="color: #2980b9; margin-bottom: 0.5em;">${slide.tokoh}</h3>
+          <p>${slide.definisi}</p>
+          <p style="font-style: italic; font-size: 0.9em;">Sumber: <strong>${slide.buku}</strong></p>
         `;
       } else {
         container.innerHTML = slide.content;
       }
-      updateProgress();
-    }
 
-    function updateProgress() {
-      const progress = Math.floor(((currentIndex + 1) / slides.length) * 100);
-      document.getElementById('progressBar').style.width = progress + '%';
-      if (currentIndex === slides.length - 1) {
-        document.getElementById('globalProgressBar').style.width = '15%';
+      const progress = Math.floor(((index + 1) / slides.length) * 100);
+      const bar = document.getElementById('progressBar');
+      bar.style.width = progress + '%';
+      bar.textContent = progress + '%';
+
+      localStorage.setItem("pro02", progress);
+
+      if (index === slides.length - 1) {
+        document.getElementById('nextBtn').style.display = 'none';
+        document.getElementById('repeatBtn').style.display = 'inline-block';
       }
     }
 
     document.getElementById('nextBtn').addEventListener('click', () => {
       currentIndex++;
-      if (currentIndex >= slides.length) {
-        currentIndex = slides.length - 1;
-        document.getElementById('nextBtn').classList.add('hidden');
-        document.getElementById('repeatBtn').classList.remove('hidden');
+      if (currentIndex < slides.length) {
+        renderSlide(currentIndex);
       }
-      renderSlide(currentIndex);
     });
 
     document.getElementById('repeatBtn').addEventListener('click', () => {
       currentIndex = 0;
       renderSlide(currentIndex);
-      document.getElementById('nextBtn').classList.remove('hidden');
-      document.getElementById('repeatBtn').classList.add('hidden');
+      document.getElementById('nextBtn').style.display = 'inline-block';
+      document.getElementById('repeatBtn').style.display = 'none';
     });
 
-    renderSlide(currentIndex);
-
     function logout() {
-      window.location.href = "login.html";
+      localStorage.clear();
+      window.location.href = "index.html";
     }
+
+    renderSlide(currentIndex);
   </script>
 </body>
 </html>

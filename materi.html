@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Geo8Tangsel - Materi</title>
+  <title>Profil User - Geo8Tangsel</title>
   <style>
     body {
       margin: 0;
@@ -22,7 +22,6 @@
     .container {
       display: flex;
       flex: 1;
-      min-height: 80vh;
     }
     nav {
       background: #ecf0f1;
@@ -45,32 +44,36 @@
       flex: 1;
       padding: 2em;
     }
-    h2 {
-      margin-top: 0;
-    }
     .breadcrumb {
       font-size: 0.9em;
       color: #7f8c8d;
       margin-bottom: 1em;
     }
-    .materi-box {
+    .card {
       background: white;
-      padding: 1.5em;
+      padding: 2em;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
+    h2 {
+      margin-top: 0;
+    }
+
     .materi-section {
       margin-bottom: 2em;
     }
+
     .materi-section h3 {
       margin-top: 0;
       color: #2c3e50;
     }
+
     .materi-list {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5em;
     }
+
     .materi-list a {
       padding: 0.5em 1em;
       background-color: #3498db;
@@ -79,6 +82,7 @@
       border-radius: 6px;
       font-size: 0.9em;
     }
+
     .materi-list a:hover {
       background-color: #2980b9;
     }
@@ -111,10 +115,9 @@
     </nav>
 
     <main>
-      <div class="breadcrumb">Materi - <a href="home.html">Beranda</a></div>
-      <h2 id="judul-materi">Pilihan Materi untuk <span id="namaUser">...</span></h2>
-
-      <div class="materi-box">
+      <div class="breadcrumb">Materi</div>
+      <h2>Materi untuk <span id="namaUser">...</span></h2>
+      <div class="card">
         <div class="materi-section">
           <h3>Kelas 10</h3>
           <div class="materi-list">
@@ -144,7 +147,7 @@
         <div class="materi-section">
           <h3>Kelas 12</h3>
           <div class="materi-list">
-            <a href="Penginderaan Jauh dan Sistem Informasi Geografi Lanjutan.html">Penginderaan Jauh dan Sistem Informasi Geografi Lanjutan</a>
+            <a href="Penginderaan Jauh dan Sistem Informasi Geografi Lanjutan.html">Penginderaan Jauh dan SIG Lanjutan</a>
             <a href="Wilayah dan Perwilayahan.html">Wilayah dan Perwilayahan</a>
             <a href="Kajian Geografi Regional.html">Kajian Geografi Regional</a>
           </div>

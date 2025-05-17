@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Definisi Geografi</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    .slide-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2em;
+      text-align: center;
+    }
+    .slide {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 2em;
+      max-width: 800px;
+      width: 100%;
+    }
+    .definisi {
+      font-size: 1.1em;
+      margin-bottom: 1em;
+    }
+    .tokoh {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-top: 1em;
+    }
+    .buku {
+      font-style: italic;
+      font-size: 0.9em;
+      color: #7f8c8d;
+    }
+    .progress-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 1em auto;
+    }
+    .progress-bar {
+      background-color: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 20px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #3498db;
+      text-align: center;
+      color: white;
+      line-height: 20px;
+      font-size: 0.8em;
+    }
+    .nav-button {
+      margin-top: 2em;
+      padding: 0.75em 1.5em;
+      background-color: #27ae60;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .restart-button {
+      background-color: #e67e22;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="progressBar">0%</div>
+      </div>
+    </div>
+    <div class="slide" id="slide-content">
+      <!-- Slide content will be injected here -->
+    </div>
+    <button class="nav-button" id="next-button">Berikutnya</button>
+  </div>
+
+  <script>
+    const slides = [
+      {
+        definisi: `Geografi adalah ilmu yang mempelajari hubungan antara fenomena alam dan manusia di permukaan bumi, serta bagaimana keduanya berinteraksi dalam ruang dan waktu. ... Pada dasarnya inti dari kajian ilmu Geografi adalah hubungan timbal balik antara manusia dengan lingkungan.`
+      },
+      {
+        tokoh: 'Hartshorne (1959)',
+        definisi: 'Geografi adalah ilmu yang mempelajari tentang variasi spasial fenomena alam dan manusia di permukaan bumi.',
+        buku: 'Perspective on the Nature of Geography'
+      },
+      {	okoh:'Ratzel (1897)',definisi:'Geografi adalah ilmu yang menyelidiki hubungan antara manusia dan lingkungannya.',buku:'Anthropogeographie'},
+      {tokoh:'Humboldt (1817)',definisi:'Geografi adalah ilmu yang mempelajari hubungan timbal balik antara kondisi fisik bumi dengan kehidupan manusia.',buku:'Kosmos'},
+      {tokoh:'Plato',definisi:'Geografi adalah ilmu yang membahas tentang permukaan bumi, ciri-ciri alam, dan hubungan antara keduanya.',buku:'Timaeus'},
+      {tokoh:'Hettner (1913)',definisi:'Geografi adalah studi tentang hubungan antara fenomena alam dan kegiatan manusia yang terorganisasi berdasarkan ruang.',buku:'Die Stellung der Geographie im System der Wissenschaften'},
+      {tokoh:'Snyder (1993)',definisi:'Geografi adalah ilmu yang mempelajari lokasi, distribusi, serta hubungan antara fenomena fisik dan manusia.',buku:'Map Usage: A Practical Guide to the Preparation and Use of Maps'},
+      {tokoh:'Carter (1968)',definisi:'Geografi adalah ilmu yang mempelajari pola distribusi fenomena alam dan manusia serta proses-proses yang menghasilkan pola tersebut.',buku:'Geography: A New Introduction'},
+      {tokoh:'Wilhelm (1963)',definisi:'Geografi adalah ilmu yang mempelajari tentang variabilitas spasial dan temporal dari fenomena geosfer.',buku:'Geographische Wissenschaft und Geographie'},
+      {tokoh:'Husain (2003)',definisi:'Geografi adalah ilmu yang mempelajari hubungan antara manusia dengan lingkungannya baik yang bersifat fisik maupun budaya.',buku:'Principles of Geography'},
+      {tokoh:'Nystuen (1968)',definisi:'Geografi adalah ilmu yang mengkaji hubungan antara manusia dengan ruang serta dampaknya terhadap lingkungan.',buku:'Urbanization and the Geography of Economic Development'},
+      {tokoh:'Sutrisno (1992)',definisi:'Geografi adalah ilmu yang membahas perbedaan kondisi alam dan fenomena sosial yang terjadi di ruang bumi.',buku:'Pengantar Ilmu Geografi'},
+      {tokoh:'Patterson (2003)',definisi:'Geografi adalah ilmu yang mempelajari tentang pemanfaatan ruang serta dampaknya terhadap interaksi manusia.',buku:'The Geography of the World'},
+      {tokoh:'Smith (2009)',definisi:'Geografi adalah ilmu yang mempelajari tentang ruang dan tempat serta hubungan antara ruang dan pola kehidupan manusia.',buku:'Geography in a Changing World'},
+      {tokoh:'Kottak (2000)',definisi:'Geografi adalah ilmu yang mempelajari aspek spatial dari fenomena alam dan kehidupan manusia, serta hubungan keduanya.',buku:'Cultural Anthropology: A Global Perspective'},
+      {tokoh:'Miller (1999)',definisi:'Geografi adalah ilmu yang mengkaji bagaimana manusia dan lingkungan saling mempengaruhi, serta bagaimana keduanya terhubung secara global.',buku:'Geography: A Social Science Perspective'},
+      {tokoh:'Lillesand & Kiefer (2000)',definisi:'Geografi adalah ilmu yang menyelidiki berbagai fenomena yang ada di permukaan bumi, serta dampaknya terhadap kehidupan manusia.',buku:'Remote Sensing and Image Interpretation'},
+      {tokoh:'Mark (2007)',definisi:'Geografi adalah ilmu yang membahas distribusi pola fenomena geosfer dan interaksi antar manusia dalam ruang.',buku:'Geography and Human Geography'},
+      {tokoh:'Berry (1980)',definisi:'Geografi adalah ilmu yang mempelajari pemetaan dunia fisik dan sosial serta hubungan keduanya dalam ruang dan waktu.',buku:'Geography in the World System'},
+      {tokoh:'Dikshit (2003)',definisi:'Geografi adalah ilmu yang mengkaji karakteristik permukaan bumi, serta analisis hubungan ruang dan interaksi manusia.',buku:'Geography: A Systems Approach'},
+      {tokoh:'David Harvey (1973)',definisi:'Geografi adalah ilmu yang mempelajari distribusi dan perubahan fenomena spasial dalam konteks sosial dan ekonomi.',buku:'Social Justice and the City'},
+      {tokoh:'Strabo (1970)',definisi:'Geografi erat kaitannya dengan faktor lokasi, karakterisitik tertentu dan hubungan antar wilayah secara keseluruhan.'},
+      {tokoh:'Preston E. James (1959)',definisi:'Geografi dapat dianggap sebagai induk ilmu pengetahuan karena banyak bidang ilmu pengetahuan yang selalu dimulai dari keadaan permukaan bumi.'},
+      {tokoh:'Frank Debenham (1950)',definisi:'Geografi adalah ilmu yang bertugas mengadakan penafsiran terhadap persebaran fakta, menemukan hubungan antara kehidupan manusia dengan lingkungan fisik.'},
+      {tokoh:'James Fairgrieve (1966)',definisi:'Geografi memiliki nilai edukatif yang dapat mendidik manusia untuk berpikir kritis dan bertanggung jawab terhadap dunia.'},
+      {tokoh:'Ferdinand Von Richthofen',definisi:'Geografi adalah ilmu yang mempelajari gejala dan sifat permukaan bumi dan penduduknya, disusun menurut letaknya.'},
+      {tokoh:'Richard Hartshorne',definisi:'Geografi adalah ilmu yang menampilkan realitas diferensiasi muka bumi seperti apa adanya.'},
+      {tokoh:'Prof. Bintarto (1981)',definisi:'Geografi mempelajari hubungan kausal gejala di permukaan bumi melalui pendekatan keruangan, kelingkungan, dan regional.'},
+      {tokoh:'I Made Sandy',definisi:'Geografi adalah ilmu yang berusaha memahami persamaan dan perbedaan dalam ruang muka bumi.'},
+      {tokoh:'Drs. N. Daldjoeni',definisi:'Geografi adalah ilmu yang menguraikan tentang bumi dengan segenap isinya termasuk manusia, hewan, dan tumbuhan.'},
+      {tokoh:'Depdikbud 1989',definisi:'Geografi adalah ilmu tentang permukaan bumi, iklim, penduduk, flora, fauna, serta hasil bumi.'},
+      {tokoh:'IGI 1988',definisi:'Geografi adalah ilmu yang mempelajari fenomena geosfer secara kelingkungan dan kewilayahan dalam konteks keruangan.'}
+    ];
+
+    let currentSlide = 0;
+    const contentDiv = document.getElementById('slide-content');
+    const progressBar = document.getElementById('progressBar');
+    const nextButton = document.getElementById('next-button');
+
+    function renderSlide(index) {
+      const slide = slides[index];
+      contentDiv.innerHTML = '';
+      if (slide.definisi) {
+        contentDiv.innerHTML += `<div class="definisi">${slide.definisi}</div>`;
+      }
+      if (slide.tokoh) {
+        contentDiv.innerHTML += `<div class="tokoh">${slide.tokoh}</div>`;
+      }
+      if (slide.buku) {
+        contentDiv.innerHTML += `<div class="buku">Buku: ${slide.buku}</div>`;
+      }
+
+      let progress = Math.round(((index + 1) / slides.length) * 100);
+      progressBar.style.width = progress + '%';
+      progressBar.textContent = progress + '%';
+      localStorage.setItem('pro01', progress);
+
+      if (index === slides.length - 1) {
+        nextButton.textContent = 'Ulangi';
+        nextButton.classList.add('restart-button');
+      } else {
+        nextButton.textContent = 'Berikutnya';
+        nextButton.classList.remove('restart-button');
+      }
+    }
+
+    nextButton.addEventListener('click', () => {
+      if (currentSlide === slides.length - 1) {
+        currentSlide = 0;
+      } else {
+        currentSlide++;
+      }
+      renderSlide(currentSlide);
+    });
+
+    // Mulai render slide pertama
+    renderSlide(currentSlide);
+  </script>
+</body>
+</html>
